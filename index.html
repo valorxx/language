@@ -310,20 +310,21 @@
     .done-icon { font-size: 40px; margin-bottom: 12px; }
     .done h2 { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
     .done p  { font-size: 14px; color: var(--text2); margin-bottom: 20px; }
+
     .file-drop-area {
-  border: 1.5px dashed var(--border2);
-  border-radius: var(--radius);
-  padding: 24px 16px;
-  text-align: center;
-  cursor: pointer;
-  transition: all .15s;
-  background: var(--surface2);
-}
-.file-drop-area:hover,
-.file-drop-area.dragover { border-color: var(--accent); background: var(--surface); }
-.file-drop-icon { font-size: 28px; margin-bottom: 8px; }
-.file-drop-text { font-size: 14px; color: var(--text); font-weight: 500; margin-bottom: 4px; }
-.file-drop-sub  { font-size: 12px; color: var(--text3); }
+      border: 1.5px dashed var(--border2);
+      border-radius: var(--radius);
+      padding: 24px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all .15s;
+      background: var(--surface2);
+    }
+    .file-drop-area:hover,
+    .file-drop-area.dragover { border-color: var(--accent); background: var(--surface); }
+    .file-drop-icon { font-size: 28px; margin-bottom: 8px; }
+    .file-drop-text { font-size: 14px; color: var(--text); font-weight: 500; margin-bottom: 4px; }
+    .file-drop-sub  { font-size: 12px; color: var(--text3); }
   </style>
 </head>
 <body>
@@ -357,31 +358,31 @@
     <div id="review-area"></div>
   </section>
 
-<!-- IMPORT -->
-<section id="page-import" class="hidden">
-  <div class="import-box">
-    <label>enter words — one per line or comma-separated</label>
-    <textarea id="import-input" placeholder="ephemeral&#10;serendipity&#10;lucid, tenacious"></textarea>
-    <div class="import-actions">
-      <button class="btn-primary" onclick="doImport()" style="width:auto;padding:8px 18px">import words</button>
-      <span id="import-status"></span>
+  <!-- IMPORT -->
+  <section id="page-import" class="hidden">
+    <div class="import-box">
+      <label>enter words — one per line or comma-separated</label>
+      <textarea id="import-input" placeholder="ephemeral&#10;serendipity&#10;lucid, tenacious"></textarea>
+      <div class="import-actions">
+        <button class="btn-primary" onclick="doImport()" style="width:auto;padding:8px 18px">import words</button>
+        <span id="import-status"></span>
+      </div>
     </div>
-  </div>
 
-  <div class="import-box" style="margin-top:10px">
-    <label>或上传本地文件（支持 .txt / .csv / .md）</label>
-    <div class="file-drop-area" id="file-drop-area" onclick="document.getElementById('file-input').click()">
-      <div class="file-drop-icon">📄</div>
-      <div class="file-drop-text">点击选择文件，或拖拽文件到此处</div>
-      <div class="file-drop-sub">支持 .txt、.csv、.md 格式</div>
-      <input type="file" id="file-input" accept=".txt,.csv,.md" style="display:none" onchange="handleFileUpload(event)">
+    <div class="import-box">
+      <label>或上传本地文件（支持 .txt / .csv / .md）</label>
+      <div class="file-drop-area" id="file-drop-area" onclick="document.getElementById('file-input').click()">
+        <div class="file-drop-icon">📄</div>
+        <div class="file-drop-text">点击选择文件，或拖拽文件到此处</div>
+        <div class="file-drop-sub">支持 .txt、.csv、.md 格式</div>
+        <input type="file" id="file-input" accept=".txt,.csv,.md" style="display:none" onchange="handleFileUpload(event)">
+      </div>
+      <div class="log" id="import-log"></div>
     </div>
-    <div class="log" id="import-log"></div>
-  </div>
 
-  <div class="section-title">library</div>
-  <div class="word-list" id="import-list"></div>
-</section>
+    <div class="section-title">library</div>
+    <div class="word-list" id="import-list"></div>
+  </section>
 </div>
 
 <script>
@@ -555,16 +556,8 @@ async function doImport() {
   }
   setStatus('done', 'ok');
   renderImportList();
-// 拖拽支持
-const dropArea = document.getElementById('file-drop-area');
-dropArea.addEventListener('dragover', e => { e.preventDefault(); dropArea.classList.add('dragover'); });
-dropArea.addEventListener('dragleave', () => dropArea.classList.remove('dragover'));
-dropArea.addEventListener('drop', e => {
-  e.preventDefault();
-  dropArea.classList.remove('dragover');
-  const file = e.dataTransfer.files[0];
-  if (file) parseFile(file);
-});
+  renderHome();
+}
 
 function handleFileUpload(e) {
   const file = e.target.files[0];
@@ -579,26 +572,19 @@ function parseFile(file) {
     return;
   }
   const reader = new FileReader();
-  reader.onload = async function(e) {
-    const text = e.target.result;
-
-    // 解析单词：按换行、逗号、分号、制表符分割
-    const raw = text.split(/[\n,;\t\r]+/);
+  reader.onload = async function(evt) {
+    const text = evt.target.result;
+    const raw  = text.split(/[\n,;\t\r]+/);
     const words = [];
     for (const w of raw) {
       const cleaned = w.replace(/[^a-zA-Z\-']/g, '').trim();
       if (cleaned.length > 1) words.push(cleaned);
     }
-
     if (!words.length) {
       alert('文件中未检测到有效单词，请确认文件内容');
       return;
     }
-
-    // 去重
     const unique = [...new Set(words.map(w => w.toLowerCase()))];
-
-    // 直接逐词导入，不经过 textarea
     const log = document.getElementById('import-log');
     log.innerHTML = '';
 
@@ -614,31 +600,42 @@ function parseFile(file) {
       row.textContent = `⋯ fetching "${w}"…`;
       log.appendChild(row);
       log.scrollTop = log.scrollHeight;
-
       try {
         const info = await fetchWord(w);
         const card = { ...info, ef: 2.5, reps: 0, interval: 1, nextReview: today(), added: today() };
-        const db2 = load();
+        const db2  = load();
         db2.push(card);
         save(db2);
         todayNew++;
-        row.className = 'log-ok';
+        row.className   = 'log-ok';
         row.textContent = `✓ "${info.word}" — ${info.definition.slice(0,60)}${info.definition.length > 60 ? '…' : ''}`;
       } catch {
-        row.className = 'log-err';
+        row.className   = 'log-err';
         row.textContent = `✗ "${w}" — not found in dictionary`;
       }
       log.scrollTop = log.scrollHeight;
     }
-
     setStatus('done', 'ok');
     renderImportList();
     renderHome();
   };
   reader.readAsText(file, 'UTF-8');
 }
-  renderHome();
-}
+
+// 拖拽支持
+document.addEventListener('DOMContentLoaded', function() {
+  const dropArea = document.getElementById('file-drop-area');
+  if (dropArea) {
+    dropArea.addEventListener('dragover', e => { e.preventDefault(); dropArea.classList.add('dragover'); });
+    dropArea.addEventListener('dragleave', () => dropArea.classList.remove('dragover'));
+    dropArea.addEventListener('drop', e => {
+      e.preventDefault();
+      dropArea.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file) parseFile(file);
+    });
+  }
+});
 
 function setStatus(msg, type) {
   const el = document.getElementById('import-status');
