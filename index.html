@@ -54,16 +54,10 @@
       line-height: 1.5;
     }
 
-    #app {
-      max-width: 560px;
-      margin: 0 auto;
-      padding: 0 1rem 3rem;
-    }
+    #app { max-width: 560px; margin: 0 auto; padding: 0 1rem 3rem; }
 
     header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      display: flex; align-items: center; gap: 12px;
       padding: 1.25rem 0 1rem;
       border-bottom: 1px solid var(--border);
       margin-bottom: 1.5rem;
@@ -74,126 +68,67 @@
 
     nav { display: flex; gap: 6px; }
     .tab {
-      font-size: 13px;
-      padding: 5px 13px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--text2);
-      cursor: pointer;
-      transition: all .15s;
-      font-weight: 500;
+      font-size: 13px; padding: 5px 13px; border-radius: 999px;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--text2); cursor: pointer; transition: all .15s; font-weight: 500;
     }
     .tab:hover { background: var(--surface2); color: var(--text); }
     .tab.active { background: var(--accent); color: var(--surface); border-color: var(--accent); }
 
     .hidden { display: none !important; }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 1.25rem;
-    }
-    .stat {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px 16px;
-    }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1.25rem; }
+    .stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; }
     .stat-label { font-size: 12px; color: var(--text3); margin-bottom: 4px; }
     .stat-val { font-size: 26px; font-weight: 600; color: var(--text); line-height: 1; }
 
     .btn-primary {
-      width: 100%;
-      padding: 12px;
-      background: var(--accent);
-      color: var(--surface);
-      border: none;
-      border-radius: var(--radius);
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: opacity .15s;
+      width: 100%; padding: 12px; background: var(--accent); color: var(--surface);
+      border: none; border-radius: var(--radius); font-size: 14px; font-weight: 500;
+      cursor: pointer; transition: opacity .15s;
     }
     .btn-primary:hover { opacity: .85; }
     .btn-secondary {
-      padding: 7px 16px;
-      background: transparent;
-      color: var(--text2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all .15s;
+      padding: 7px 16px; background: transparent; color: var(--text2);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      font-size: 13px; font-weight: 500; cursor: pointer; transition: all .15s;
     }
     .btn-secondary:hover { background: var(--surface2); color: var(--text); }
 
     .section-title {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text3);
-      text-transform: uppercase;
-      letter-spacing: .6px;
-      margin-bottom: 10px;
+      font-size: 13px; font-weight: 500; color: var(--text3);
+      text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px;
     }
     .word-list { display: flex; flex-direction: column; gap: 6px; }
     .word-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 10px 14px;
-      font-size: 13px;
+      display: flex; align-items: center; gap: 10px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 10px 14px; font-size: 13px;
     }
     .word-item .name { font-weight: 600; min-width: 100px; color: var(--text); }
     .word-item .phon { color: var(--text2); font-style: italic; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .badge {
-      font-size: 11px;
-      font-weight: 500;
-      padding: 2px 8px;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-    .badge-due   { background: var(--amber-bg); color: var(--amber-text); }
-    .badge-new   { background: var(--green-bg);  color: var(--green-text); }
-    .badge-ok    { background: var(--surface2); color: var(--text3); }
+    .badge { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+    .badge-due  { background: var(--amber-bg); color: var(--amber-text); }
+    .badge-new  { background: var(--green-bg);  color: var(--green-text); }
+    .badge-ok   { background: var(--surface2); color: var(--text3); }
     .del-btn {
-      margin-left: auto;
-      font-size: 12px;
-      color: var(--text3);
-      background: transparent;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 2px 8px;
-      cursor: pointer;
+      margin-left: auto; font-size: 12px; color: var(--text3);
+      background: transparent; border: 1px solid var(--border);
+      border-radius: 6px; padding: 2px 8px; cursor: pointer;
     }
     .del-btn:hover { background: var(--red-bg); color: var(--red-text); border-color: var(--red-text); }
     .empty { text-align: center; color: var(--text3); font-size: 14px; padding: 2.5rem 0; }
 
     .import-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
-      margin-bottom: 1.25rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1.25rem;
     }
     .import-box label { font-size: 13px; color: var(--text2); display: block; margin-bottom: 8px; }
     .import-box textarea {
-      width: 100%;
-      height: 100px;
-      resize: vertical;
-      font-size: 14px;
-      font-family: monospace;
-      padding: 10px 12px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--surface2);
-      color: var(--text);
-      line-height: 1.6;
+      width: 100%; height: 100px; resize: vertical; font-size: 14px;
+      font-family: monospace; padding: 10px 12px;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      background: var(--surface2); color: var(--text); line-height: 1.6;
     }
     .import-box textarea:focus { outline: none; border-color: var(--border2); }
     .import-actions { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
@@ -204,91 +139,67 @@
     .log-err     { font-size: 12px; color: var(--red-text); }
     .log-loading { font-size: 12px; color: var(--text3); }
 
+    .lang-toggle {
+      display: flex; gap: 6px; margin-bottom: 10px;
+    }
+    .lang-btn {
+      font-size: 12px; padding: 4px 12px; border-radius: 999px;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--text2); cursor: pointer; transition: all .15s;
+    }
+    .lang-btn.active { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+
+    .file-drop-area {
+      border: 1.5px dashed var(--border2); border-radius: var(--radius);
+      padding: 24px 16px; text-align: center; cursor: pointer;
+      transition: all .15s; background: var(--surface2);
+    }
+    .file-drop-area:hover,
+    .file-drop-area.dragover { border-color: var(--accent); background: var(--surface); }
+    .file-drop-icon { font-size: 28px; margin-bottom: 8px; }
+    .file-drop-text { font-size: 14px; color: var(--text); font-weight: 500; margin-bottom: 4px; }
+    .file-drop-sub  { font-size: 12px; color: var(--text3); }
+
     .card-meta { text-align: center; font-size: 13px; color: var(--text3); margin-bottom: 10px; }
-    .progress-bar {
-      height: 3px;
-      background: var(--border);
-      border-radius: 99px;
-      margin-bottom: 14px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      background: var(--accent);
-      border-radius: 99px;
-      transition: width .3s;
-    }
+    .progress-bar { height: 3px; background: var(--border); border-radius: 99px; margin-bottom: 14px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--accent); border-radius: 99px; transition: width .3s; }
 
     .card-scene { perspective: 1000px; margin-bottom: 14px; }
     .card-inner {
-      position: relative;
-      width: 100%;
-      height: 230px;
+      position: relative; width: 100%; height: 230px;
       transform-style: preserve-3d;
-      transition: transform .5s cubic-bezier(.4,0,.2,1);
-      cursor: pointer;
+      transition: transform .5s cubic-bezier(.4,0,.2,1); cursor: pointer;
     }
     .card-inner.flipped { transform: rotateY(180deg); }
     .card-face {
-      position: absolute;
-      inset: 0;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      background: var(--surface);
-      border: 1px solid var(--border);
+      position: absolute; inset: 0;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; padding: 1.5rem; text-align: center;
     }
     .card-back { transform: rotateY(180deg); }
-
     .card-word { font-size: 32px; font-weight: 600; letter-spacing: -0.5px; color: var(--text); margin-bottom: 6px; }
     .card-phon { font-size: 16px; color: var(--text2); font-style: italic; margin-bottom: 8px; }
     .card-pos  {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 500;
-      padding: 2px 9px;
-      border-radius: 999px;
-      background: var(--surface2);
-      color: var(--text3);
-      margin-bottom: 10px;
+      display: inline-block; font-size: 11px; font-weight: 500;
+      padding: 2px 9px; border-radius: 999px;
+      background: var(--surface2); color: var(--text3); margin-bottom: 10px;
     }
     .card-def  { font-size: 15px; color: var(--text); line-height: 1.6; max-width: 340px; }
     .card-ex   {
-      font-size: 13px;
-      color: var(--text2);
-      font-style: italic;
-      line-height: 1.55;
-      max-width: 340px;
-      margin-top: 10px;
-      border-left: 2px solid var(--border2);
-      padding-left: 12px;
-      text-align: left;
+      font-size: 13px; color: var(--text2); font-style: italic;
+      line-height: 1.55; max-width: 340px; margin-top: 10px;
+      border-left: 2px solid var(--border2); padding-left: 12px; text-align: left;
     }
     .card-hint { font-size: 12px; color: var(--text3); margin-top: 12px; }
 
-    .feedback {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-    }
+    .feedback { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
     .fb {
-      padding: 10px 6px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: transparent;
-      cursor: pointer;
-      text-align: center;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text);
-      transition: all .15s;
-      line-height: 1.3;
+      padding: 10px 6px; border-radius: var(--radius); border: 1px solid var(--border);
+      background: transparent; cursor: pointer; text-align: center;
+      font-size: 13px; font-weight: 500; color: var(--text); transition: all .15s; line-height: 1.3;
     }
     .fb small { font-size: 11px; display: block; color: var(--text3); margin-top: 2px; font-weight: 400; }
     .fb.q0 { border-color: #f09595; }
@@ -301,30 +212,12 @@
     .fb.q3:hover { background: var(--blue-bg);  color: var(--blue-text); }
 
     .done {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+      text-align: center; padding: 3rem 1rem;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
     }
     .done-icon { font-size: 40px; margin-bottom: 12px; }
     .done h2 { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
     .done p  { font-size: 14px; color: var(--text2); margin-bottom: 20px; }
-
-    .file-drop-area {
-      border: 1.5px dashed var(--border2);
-      border-radius: var(--radius);
-      padding: 24px 16px;
-      text-align: center;
-      cursor: pointer;
-      transition: all .15s;
-      background: var(--surface2);
-    }
-    .file-drop-area:hover,
-    .file-drop-area.dragover { border-color: var(--accent); background: var(--surface); }
-    .file-drop-icon { font-size: 28px; margin-bottom: 8px; }
-    .file-drop-text { font-size: 14px; color: var(--text); font-weight: 500; margin-bottom: 4px; }
-    .file-drop-sub  { font-size: 12px; color: var(--text3); }
   </style>
 </head>
 <body>
@@ -361,8 +254,13 @@
   <!-- IMPORT -->
   <section id="page-import" class="hidden">
     <div class="import-box">
-      <label>enter words — one per line or comma-separated</label>
-      <textarea id="import-input" placeholder="ephemeral&#10;serendipity&#10;lucid, tenacious"></textarea>
+      <label>选择语言 / Select language</label>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="lang-en" onclick="setLang('en')">🇬🇧 English</button>
+        <button class="lang-btn" id="lang-es" onclick="setLang('es')">🇪🇸 Español</button>
+      </div>
+      <label>输入单词 — 每行一个或逗号分隔</label>
+      <textarea id="import-input" placeholder="ephemeral&#10;serendipity&#10;lucid"></textarea>
       <div class="import-actions">
         <button class="btn-primary" onclick="doImport()" style="width:auto;padding:8px 18px">import words</button>
         <span id="import-status"></span>
@@ -370,7 +268,7 @@
     </div>
 
     <div class="import-box">
-      <label>或上传本地文件（支持 .txt / .csv / .md）</label>
+      <label>上传本地文件（支持 .txt / .csv / .md，每行一个单词）</label>
       <div class="file-drop-area" id="file-drop-area" onclick="document.getElementById('file-input').click()">
         <div class="file-drop-icon">📄</div>
         <div class="file-drop-text">点击选择文件，或拖拽文件到此处</div>
@@ -393,6 +291,18 @@ const save = db => localStorage.setItem(KEY, JSON.stringify(db));
 const today = () => new Date().toISOString().slice(0,10);
 const isDue  = c => !c.nextReview || c.nextReview <= today();
 
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+  document.getElementById('lang-es').classList.toggle('active', lang === 'es');
+  const ta = document.getElementById('import-input');
+  ta.placeholder = lang === 'es'
+    ? 'zumo\naceite\nmayonesa'
+    : 'ephemeral\nserendipity\nlucid';
+}
+
 function sm2(card, q) {
   let { ef = 2.5, reps = 0, interval = 1 } = card;
   ef = Math.max(1.3, ef + 0.1 - (3 - q) * (0.08 + (3 - q) * 0.02));
@@ -408,7 +318,8 @@ function sm2(card, q) {
   return { ...card, ef, reps, interval, nextReview: next.toISOString().slice(0,10), lastReview: today() };
 }
 
-async function fetchWord(word) {
+// 英文词典 API
+async function fetchWordEN(word) {
   const r = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word.trim().toLowerCase())}`);
   if (!r.ok) throw new Error('not found');
   const [entry] = await r.json();
@@ -420,8 +331,50 @@ async function fetchWord(word) {
     phonetic:   phon,
     pos:        meaning.partOfSpeech || '',
     definition: def.definition || '',
-    example:    def.example    || '',
+    example:    def.example || '',
+    lang:       'en',
   };
+}
+
+// 西班牙语词典 API（FreeDictionaryAPI，基于 Wiktionary）
+async function fetchWordES(word) {
+  const clean = word.trim().toLowerCase();
+  const r = await fetch(`https://api.freedictionaryapi.com/api/v2/entries/es/${encodeURIComponent(clean)}`);
+  if (!r.ok) throw new Error('not found');
+  const [entry] = await r.json();
+  const phon    = (entry.phonetics || []).find(p => p.text)?.text || '';
+  const meaning = (entry.meanings || [])[0] || {};
+  const def     = (meaning.definitions || [])[0] || {};
+  return {
+    word:       entry.word || word,
+    phonetic:   phon,
+    pos:        meaning.partOfSpeech || '',
+    definition: def.definition || '',
+    example:    def.example || '',
+    lang:       'es',
+  };
+}
+
+async function fetchWord(word, lang) {
+  if (lang === 'es') return fetchWordES(word);
+  return fetchWordEN(word);
+}
+
+// 解析单词：保留重音符号等 Unicode 字母，支持斜杠分词
+function parseWords(text) {
+  const words = [];
+  // 先按斜杠拆分，再按换行/逗号/分号/Tab拆分
+  const parts = text.split(/[\n,;\t\r]+/);
+  for (const part of parts) {
+    // 支持 "Móvil / Celular" 这种用斜杠分隔的多词
+    const subparts = part.split('/');
+    for (const sp of subparts) {
+      // 保留 Unicode 字母、连字符、撇号，去掉其他字符
+      const cleaned = sp.replace(/[^\p{L}\p{M}\-']/gu, '').trim();
+      if (cleaned.length > 1) words.push(cleaned);
+    }
+  }
+  return [...new Set(words.map(w => w.toLowerCase()))];
 }
 
 let todayNew = 0;
@@ -521,18 +474,16 @@ function rate(q) {
   renderCard();
 }
 
-async function doImport() {
-  const raw = document.getElementById('import-input').value;
-  if (!raw.trim()) { setStatus('enter some words first', 'err'); return; }
-  const words = raw.split(/[\n,]+/).map(w => w.trim()).filter(Boolean);
-  const log   = document.getElementById('import-log');
+async function importWordList(words, lang) {
+  const log = document.getElementById('import-log');
   log.innerHTML = '';
-  document.getElementById('import-input').value = '';
 
   for (const w of words) {
     const db = load();
     if (db.find(x => x.word.toLowerCase() === w.toLowerCase())) {
-      log.innerHTML += `<div class="log-skip">⊘ "${w}" already in library</div>`; continue;
+      log.innerHTML += `<div class="log-skip">⊘ "${w}" already in library</div>`;
+      log.scrollTop = log.scrollHeight;
+      continue;
     }
     const row = document.createElement('div');
     row.className = 'log-loading';
@@ -540,14 +491,14 @@ async function doImport() {
     log.appendChild(row);
     log.scrollTop = log.scrollHeight;
     try {
-      const info = await fetchWord(w);
+      const info = await fetchWord(w, lang);
       const card = { ...info, ef: 2.5, reps: 0, interval: 1, nextReview: today(), added: today() };
       const db2  = load();
       db2.push(card);
       save(db2);
       todayNew++;
       row.className   = 'log-ok';
-      row.textContent = `✓ "${info.word}" — ${info.definition.slice(0,60)}${info.definition.length>60?'…':''}`;
+      row.textContent = `✓ "${info.word}" — ${(info.definition||'').slice(0,60)}${(info.definition||'').length>60?'…':''}`;
     } catch {
       row.className   = 'log-err';
       row.textContent = `✗ "${w}" — not found in dictionary`;
@@ -557,6 +508,15 @@ async function doImport() {
   setStatus('done', 'ok');
   renderImportList();
   renderHome();
+}
+
+async function doImport() {
+  const raw = document.getElementById('import-input').value;
+  if (!raw.trim()) { setStatus('enter some words first', 'err'); return; }
+  const words = parseWords(raw);
+  if (!words.length) { setStatus('no valid words found', 'err'); return; }
+  document.getElementById('import-input').value = '';
+  await importWordList(words, currentLang);
 }
 
 function handleFileUpload(e) {
@@ -573,51 +533,13 @@ function parseFile(file) {
   }
   const reader = new FileReader();
   reader.onload = async function(evt) {
-    const text = evt.target.result;
-    const raw  = text.split(/[\n,;\t\r]+/);
-    const words = [];
-    for (const w of raw) {
-      const cleaned = w.replace(/[^a-zA-Z\-']/g, '').trim();
-      if (cleaned.length > 1) words.push(cleaned);
-    }
+    const text  = evt.target.result;
+    const words = parseWords(text);
     if (!words.length) {
       alert('文件中未检测到有效单词，请确认文件内容');
       return;
     }
-    const unique = [...new Set(words.map(w => w.toLowerCase()))];
-    const log = document.getElementById('import-log');
-    log.innerHTML = '';
-
-    for (const w of unique) {
-      const db = load();
-      if (db.find(x => x.word.toLowerCase() === w.toLowerCase())) {
-        log.innerHTML += `<div class="log-skip">⊘ "${w}" already in library</div>`;
-        log.scrollTop = log.scrollHeight;
-        continue;
-      }
-      const row = document.createElement('div');
-      row.className = 'log-loading';
-      row.textContent = `⋯ fetching "${w}"…`;
-      log.appendChild(row);
-      log.scrollTop = log.scrollHeight;
-      try {
-        const info = await fetchWord(w);
-        const card = { ...info, ef: 2.5, reps: 0, interval: 1, nextReview: today(), added: today() };
-        const db2  = load();
-        db2.push(card);
-        save(db2);
-        todayNew++;
-        row.className   = 'log-ok';
-        row.textContent = `✓ "${info.word}" — ${info.definition.slice(0,60)}${info.definition.length > 60 ? '…' : ''}`;
-      } catch {
-        row.className   = 'log-err';
-        row.textContent = `✗ "${w}" — not found in dictionary`;
-      }
-      log.scrollTop = log.scrollHeight;
-    }
-    setStatus('done', 'ok');
-    renderImportList();
-    renderHome();
+    await importWordList(words, currentLang);
   };
   reader.readAsText(file, 'UTF-8');
 }
@@ -625,16 +547,15 @@ function parseFile(file) {
 // 拖拽支持
 document.addEventListener('DOMContentLoaded', function() {
   const dropArea = document.getElementById('file-drop-area');
-  if (dropArea) {
-    dropArea.addEventListener('dragover', e => { e.preventDefault(); dropArea.classList.add('dragover'); });
-    dropArea.addEventListener('dragleave', () => dropArea.classList.remove('dragover'));
-    dropArea.addEventListener('drop', e => {
-      e.preventDefault();
-      dropArea.classList.remove('dragover');
-      const file = e.dataTransfer.files[0];
-      if (file) parseFile(file);
-    });
-  }
+  if (!dropArea) return;
+  dropArea.addEventListener('dragover', e => { e.preventDefault(); dropArea.classList.add('dragover'); });
+  dropArea.addEventListener('dragleave', () => dropArea.classList.remove('dragover'));
+  dropArea.addEventListener('drop', e => {
+    e.preventDefault();
+    dropArea.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    if (file) parseFile(file);
+  });
 });
 
 function setStatus(msg, type) {
