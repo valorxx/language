@@ -555,7 +555,7 @@ async function doImport() {
   }
   setStatus('done', 'ok');
   renderImportList();
- // 拖拽支持
+// 拖拽支持
 const dropArea = document.getElementById('file-drop-area');
 dropArea.addEventListener('dragover', e => { e.preventDefault(); dropArea.classList.add('dragover'); });
 dropArea.addEventListener('dragleave', () => dropArea.classList.remove('dragover'));
@@ -569,36 +569,71 @@ dropArea.addEventListener('drop', e => {
 function handleFileUpload(e) {
   const file = e.target.files[0];
   if (file) parseFile(file);
-  e.target.value = ''; // 允许重复上传同一文件
+  e.target.value = '';
 }
 
 function parseFile(file) {
-  const allowed = ['text/plain', 'text/csv', 'text/markdown'];
   const ext = file.name.split('.').pop().toLowerCase();
   if (!['txt','csv','md'].includes(ext)) {
     alert('仅支持 .txt、.csv、.md 格式');
     return;
   }
   const reader = new FileReader();
-  reader.onload = async e => {
+  reader.onload = async function(e) {
     const text = e.target.result;
-    // 解析：按换行、逗号、分号、制表符分割，过滤空值和非英文单词
-    const words = text
-      .split(/[\n,;\t]+/)
-      .map(w => w.replace(/[^a-zA-Z\-']/g, '').trim())
-      .filter(w => w.length > 1);
+
+    // 解析单词：按换行、逗号、分号、制表符分割
+    const raw = text.split(/[\n,;\t\r]+/);
+    const words = [];
+    for (const w of raw) {
+      const cleaned = w.replace(/[^a-zA-Z\-']/g, '').trim();
+      if (cleaned.length > 1) words.push(cleaned);
+    }
 
     if (!words.length) {
-      alert('文件中未检测到有效单词');
+      alert('文件中未检测到有效单词，请确认文件内容');
       return;
     }
 
     // 去重
     const unique = [...new Set(words.map(w => w.toLowerCase()))];
 
-    // 填入 textarea 预览，然后触发导入
-    document.getElementById('import-input').value = unique.join('\n');
-    await doImport();
+    // 直接逐词导入，不经过 textarea
+    const log = document.getElementById('import-log');
+    log.innerHTML = '';
+
+    for (const w of unique) {
+      const db = load();
+      if (db.find(x => x.word.toLowerCase() === w.toLowerCase())) {
+        log.innerHTML += `<div class="log-skip">⊘ "${w}" already in library</div>`;
+        log.scrollTop = log.scrollHeight;
+        continue;
+      }
+      const row = document.createElement('div');
+      row.className = 'log-loading';
+      row.textContent = `⋯ fetching "${w}"…`;
+      log.appendChild(row);
+      log.scrollTop = log.scrollHeight;
+
+      try {
+        const info = await fetchWord(w);
+        const card = { ...info, ef: 2.5, reps: 0, interval: 1, nextReview: today(), added: today() };
+        const db2 = load();
+        db2.push(card);
+        save(db2);
+        todayNew++;
+        row.className = 'log-ok';
+        row.textContent = `✓ "${info.word}" — ${info.definition.slice(0,60)}${info.definition.length > 60 ? '…' : ''}`;
+      } catch {
+        row.className = 'log-err';
+        row.textContent = `✗ "${w}" — not found in dictionary`;
+      }
+      log.scrollTop = log.scrollHeight;
+    }
+
+    setStatus('done', 'ok');
+    renderImportList();
+    renderHome();
   };
   reader.readAsText(file, 'UTF-8');
 }
