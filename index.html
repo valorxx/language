@@ -207,7 +207,7 @@ async function fetchWordEN(word) {
 // 西班牙语：MyMemory 翻译 API（西班牙语 → 英语）
 async function fetchWordES(word) {
   const clean = word.trim().toLowerCase();
-  const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(clean)}&langpair=es|en`;
+const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(clean)}&langpair=es|zh`;
   const r = await fetch(url);
   if (!r.ok) throw new Error('network error');
   const data = await r.json();
